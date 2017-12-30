@@ -1,0 +1,18 @@
+{
+  "transactions": [
+    {
+      "exchange": "bitstamp",
+      "currencyPair": "etheur",
+      "recurrence": "* */5 * * * *",
+      "amount": 0.005,
+      "action": "buyMarket"
+    },
+    {
+      "exchange": "kraken",
+      "currencyPair": "XMREUR",
+      "recurrence": "* */10 * * * *",
+      "amount": 0.001,
+      "action": "buyMarket"
+    }
+  ]
+}

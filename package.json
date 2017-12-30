@@ -1,0 +1,27 @@
+{
+  "name": "crypto-recurring-transaction",
+  "version": "1.0.0",
+  "description": "Tool for creating and executing reccuring transactions on crypto currency exchanges",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vytenis Sabelka",
+  "license": "ISC",
+  "dependencies": {
+    "bitstamp": "^1.0.4",
+    "kraken-api": "^1.0.0",
+    "node-schedule": "^1.2.5",
+    "winston": "^3.0.0-rc1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.0.3",
+    "eslint": "^4.13.1",
+    "eslint-config-google": "^0.9.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-prettier": "^2.4.0",
+    "eslint-plugin-react": "^7.5.1",
+    "prettier": "1.9.2"
+  }
+}

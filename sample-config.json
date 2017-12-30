@@ -1,0 +1,13 @@
+{
+  "exchanges": {
+    "bitstamp": {
+      "key": "placeholder",
+      "secret": "placeholder",
+      "clientId": "placeholder"
+    },
+    "kraken": {
+      "key": "placeholder",
+      "secret": "placeholder"
+    }
+  }
+}
