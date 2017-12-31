@@ -3,6 +3,7 @@ const schedule = require("node-schedule");
 const TransactionExecutor = require("./transactionExecutor");
 const transactionFactory = require("./transactionFactory");
 const exchangeFactory = require("./exchangeFactory");
+const logger = require("../utils/logger");
 
 class TransactionScheduler {
   constructor(transactions) {
@@ -32,11 +33,11 @@ class TransactionScheduler {
 
   doScheduleTransaction(transaction) {
     if (!exchangeFactory[transaction.exchange]) {
-      console.log(
-        "No configuration defined for exchange" +
-          transaction.exchange +
-          " in config.json. Exiting."
-      );
+      logger.error({
+        exchange: transaction.exchange,
+        message:
+          "No configuration defined for this exchange in config.json. Exiting."
+      });
       process.exit();
     }
 

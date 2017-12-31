@@ -1,5 +1,6 @@
 const fs = require("fs");
 const KrakenClient = require("kraken-api");
+const logger = require("../utils/logger");
 
 class KrakenExchange {
   constructor() {
@@ -28,9 +29,9 @@ class KrakenExchange {
       },
       function(error, data) {
         if (error) {
-          console.log(error);
+          logger.error(error);
         } else {
-          console.log(data.result);
+          logger.info(data.result);
         }
       }
     );

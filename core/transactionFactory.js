@@ -1,5 +1,6 @@
 const fs = require("fs");
 const Transaction = require("./transaction");
+const logger = require("../utils/logger");
 
 const TransactionFactory = function() {
   this.transactions = [];
@@ -21,7 +22,7 @@ TransactionFactory.prototype.readTransactionsJSON = () => {
     !parsedJSON.transactions ||
     parsedJSON.transactions.length == 0
   ) {
-    console.log("No transactions defined in transactions.json. Exiting.");
+    logger.error("No transactions defined in transactions.json. Exiting.");
     process.exit();
   }
 

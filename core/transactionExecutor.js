@@ -1,4 +1,5 @@
 const exchangeFactory = require("./exchangeFactory");
+const logger = require("../utils/logger");
 
 class TransactionExecutor {
   static doExecuteTransactions(transactions) {
@@ -8,13 +9,14 @@ class TransactionExecutor {
   }
 
   static doExecuteTransaction(transaction) {
-    console.log(
-      new Date(),
-      "Transaction executed on: " + transaction.exchange,
-      "On currency pair:" + transaction.currencyPair,
-      "Action: " + transaction.action,
-      "Amount: " + transaction.amount
-    );
+    logger.info({
+      status: "Transaction issued",
+      market: transaction.exchange,
+      currencyPair: transaction.currencyPair,
+      action: transaction.action,
+      amount: transaction.amount
+    });
+
     exchangeFactory[transaction.exchange][transaction.action](transaction);
   }
 }

@@ -1,5 +1,6 @@
 const fs = require("fs");
 const Bitstamp = require("bitstamp");
+const logger = require("../utils/logger");
 
 class BitstampExchange {
   constructor() {
@@ -26,7 +27,7 @@ class BitstampExchange {
     this.bitstampClient.buyMarket(
       transaction.currencyPair,
       transaction.amount,
-      console.log
+      logger.info
     );
   }
 }
