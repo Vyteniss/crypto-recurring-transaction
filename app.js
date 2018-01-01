@@ -5,11 +5,6 @@ const logger = require("./utils/logger");
 const Channels = require("./enums/Channels");
 
 logger.info("crypto-recurring-transaction is starting");
-console.log(Channels.BUYMARKET);
-
-//subscribe to the events.
-//Setup event listeners for node-schedule
-//In there publish the specific events
 
 //setup subscriptions
 (function() {
