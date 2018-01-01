@@ -1,5 +1,7 @@
 const exchangeFactory = require("./exchangeFactory");
 const logger = require("../utils/logger");
+const notificationMediator = require("./notificationMediator");
+const Channels = require("../enums/Channels");
 
 class TransactionExecutor {
   static doExecuteTransactions(transactions) {
@@ -9,14 +11,7 @@ class TransactionExecutor {
   }
 
   static doExecuteTransaction(transaction) {
-    logger.info({
-      status: "Transaction issued",
-      market: transaction.exchange,
-      currencyPair: transaction.currencyPair,
-      action: transaction.action,
-      amount: transaction.amount
-    });
-
+    notificationMediator.publish(Channels.BUYMARKET, transaction);
     exchangeFactory[transaction.exchange][transaction.action](transaction);
   }
 }

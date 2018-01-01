@@ -1,6 +1,10 @@
 const exchangeDir = "./exchanges/";
 const exchangeConfigFile = "./config.json";
 const fs = require("fs");
+<<<<<<< HEAD
+=======
+const notificationMediator = require("./notificationMediator");
+>>>>>>> Added notification mediator
 const logger = require("../utils/logger");
 
 const ExchangeFactory = function() {
@@ -25,6 +29,8 @@ const ExchangeFactory = function() {
       exchanges[exchange.name] = exchangeReference;
     }
   });
+
+  logger.info(notificationMediator);
 };
 
 module.exports = new ExchangeFactory();
