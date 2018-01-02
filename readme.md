@@ -16,13 +16,13 @@ I suggest you investigate the code before using it. Create sub-accounts on the e
 * Copy sample-config.json to config.json and add configuration of the exchanges.
 * Copy sample-transactions.json to transactions.json and add configuration of the transactions.
 * run index.js with node
-  * `node index.js`
+  * `node app.js`
 
 ### Running in the background
 
 In order for transactions to be executed crypto-recurring-transaction needs to be running all the time. Consider running it with pm2 to put it to background:
 
-`pm2 start index.js --name crt -- --ui`
+`pm2 start app.js --name crt -- --ui`
 
 Then to see the logs:
 
@@ -38,7 +38,7 @@ Open transactions.json and add a new object containing your transaction configur
 
 * `"exchange": "bitstamp"` One of the supported exchanges (Currently "bitstamp" or "kraken")
 * `"currencyPair": "etheur"` Currency pair in which you want your recurring transaction to be executed. Please refer to [Bitstamp](https://www.bitstamp.net/api/) and [Kraken](https://api.kraken.com/0/public/AssetPairs) documentation for the lists of supported currency pairs
-* `"recurrence": "*/1 * * * * *"` Cron expression instructing how often transaction should be executed. Consider using crontab expression generator to generate this expression.
+* `"recurrence": "* * */10 * * *"` Cron expression instructing how often transaction should be executed. Consider using crontab expression generator to generate this expression.
 * `"amount": 5` Amount of the cryptocurrency to be bought with this transaction.
 * `"action": "buyMarket"` Currently only "buyMarket"
 
@@ -50,7 +50,7 @@ Tested with node v8.4.0, should be fine with any of the newer version as well.
 
 * Logging currently only to stdout. Logging to files to be implemented.
 * Only buy market orders supported. Sell orders to be implemented.
-* Only Bitstamp currently supported. Kraken API and the service itself is highly unstable nowadays, better to avoid it for now. More exchanges to be added.
+* Kraken API and the service itself is highly unstable nowadays, better to avoid it for now. More exchanges to be added.
 
 ## Acknowledgments
 
