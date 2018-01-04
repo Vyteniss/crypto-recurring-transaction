@@ -9,7 +9,8 @@ logger.info(Constants.STARTING);
 //setup subscriptions
 (function() {
   logger.info(Constants.SUBSCRIPTIONS_SETUP);
-  notificationMediator.subscribe(Constants.BUYMARKET, logger, logger.warn);
+  notificationMediator.subscribe(Constants.BUY_MARKET, logger, logger.info);
+  logger.info(Constants.SUBSCRIPTIONS_SETUP_CMP);
 })();
 
 transactionScheduler.doScheduleAllTransactions();

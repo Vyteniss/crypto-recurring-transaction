@@ -9,7 +9,6 @@ const Constants = require("../constants/Constants");
 class TransactionScheduler {
   constructor(transactions) {
     this.transactions = transactions;
-    this.time = new Date();
     this.scheduledTransactionJobs = [];
   }
 
@@ -45,6 +44,18 @@ class TransactionScheduler {
       TransactionExecutor.doExecuteTransaction(transaction);
     });
 
+    logger.info({
+      message: Constants.TRANS_SCHEDULED + job.nextInvocation(),
+      transaction: transaction
+    });
+
+    job.on("run", () => {
+      logger.info({
+        message: Constants.NEXT_INV + job.nextInvocation(),
+        transaction: transaction
+      });
+    });
+
     this.scheduledTransactionJobs.push(job);
     return job;
   }
@@ -57,10 +68,6 @@ class TransactionScheduler {
     this.scheduledTransactionJobs.forEach(job => {
       job.cancel();
     });
-  }
-
-  static getNextInvocation(scheduledTransactionJob) {
-    return scheduledTransactionJob.getNextInvocation();
   }
 }
 

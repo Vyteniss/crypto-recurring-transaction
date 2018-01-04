@@ -9,7 +9,7 @@ const jsonFormatter = logEntry => {
 };
 
 const logger = winston.createLogger({
-  level: "info",
+  level: "silly",
   format: winston.format(jsonFormatter)(),
   transports: [
     new winston.transports.Console(),

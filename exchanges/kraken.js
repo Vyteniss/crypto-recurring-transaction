@@ -5,7 +5,9 @@ const logger = require("../utils/logger");
 class KrakenExchange {
   constructor() {
     const config = this.readConfig();
-    this.krakenClient = new KrakenClient(config.key, config.secret);
+    this.krakenClient = new KrakenClient(config.key, config.secret, {
+      timeout: 100000
+    });
   }
 
   readConfig() {

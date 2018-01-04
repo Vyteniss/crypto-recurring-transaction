@@ -17,7 +17,7 @@ class notificationMediator {
   }
 
   publish(channel) {
-    logger.info(Constants.MESSAGE_PUBL + channel);
+    logger.silly(Constants.MESSAGE_PUBL + channel);
     if (!this.channels[channel]) {
       return false;
     }
