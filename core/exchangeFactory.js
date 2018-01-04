@@ -1,9 +1,16 @@
 const exchangeDir = "./exchanges/";
+const exchangeConfigFile = "./config.json";
 const fs = require("fs");
+const logger = require("../utils/logger");
 
 const ExchangeFactory = function() {
   const exchanges = this;
   const exchangesList = [];
+
+  if (!fs.existsSync(exchangeConfigFile)) {
+    logger.error("Exchange configuration file not found. Exiting");
+    process.exit();
+  }
 
   fs.readdirSync(exchangeDir).forEach(file => {
     exchangesList.push({

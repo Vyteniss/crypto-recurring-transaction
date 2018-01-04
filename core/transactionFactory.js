@@ -1,6 +1,7 @@
 const fs = require("fs");
 const Transaction = require("./transaction");
 const logger = require("../utils/logger");
+const transactionConfigFile = "./transactions.json";
 
 const TransactionFactory = function() {
   this.transactions = [];
@@ -9,6 +10,11 @@ const TransactionFactory = function() {
 };
 
 TransactionFactory.prototype.reloadTransactions = function() {
+  if (!fs.existsSync(transactionConfigFile)) {
+    logger.error("Transaction configuration file not found. Exiting");
+    process.exit();
+  }
+
   const rawData = this.readTransactionsJSON();
   this.transactions = this.constructTransactions(rawData);
 };
