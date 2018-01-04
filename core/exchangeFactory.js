@@ -1,18 +1,16 @@
 const exchangeDir = "./exchanges/";
 const exchangeConfigFile = "./config.json";
 const fs = require("fs");
-<<<<<<< HEAD
-=======
 const notificationMediator = require("./notificationMediator");
->>>>>>> Added notification mediator
 const logger = require("../utils/logger");
+const Constants = require("../constants/Constants");
 
 const ExchangeFactory = function() {
   const exchanges = this;
   const exchangesList = [];
 
   if (!fs.existsSync(exchangeConfigFile)) {
-    logger.error("Exchange configuration file not found. Exiting");
+    logger.error(Constants.EXCHANGE_CFG_NOT_FOUND);
     process.exit();
   }
 

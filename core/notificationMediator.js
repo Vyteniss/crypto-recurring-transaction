@@ -1,4 +1,5 @@
 const logger = require("../utils/logger");
+const Constants = require("../constants/Constants");
 
 class notificationMediator {
   constructor() {
@@ -16,7 +17,7 @@ class notificationMediator {
   }
 
   publish(channel) {
-    logger.info("message published " + channel);
+    logger.info(Constants.MESSAGE_PUBL + channel);
     if (!this.channels[channel]) {
       return false;
     }

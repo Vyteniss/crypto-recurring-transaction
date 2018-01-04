@@ -2,14 +2,14 @@ const transactionScheduler = require("./core/transactionScheduler.js");
 const notificationMediator = require("./core/notificationMediator");
 
 const logger = require("./utils/logger");
-const Channels = require("./enums/Channels");
+const Constants = require("./constants/Constants");
 
-logger.info("crypto-recurring-transaction is starting");
+logger.info(Constants.STARTING);
 
 //setup subscriptions
 (function() {
-  logger.info("Subscriptions are being setup");
-  notificationMediator.subscribe(Channels.BUYMARKET, logger, logger.warn);
+  logger.info(Constants.SUBSCRIPTIONS_SETUP);
+  notificationMediator.subscribe(Constants.BUYMARKET, logger, logger.warn);
 })();
 
 transactionScheduler.doScheduleAllTransactions();

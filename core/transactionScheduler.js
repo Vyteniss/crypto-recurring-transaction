@@ -4,6 +4,7 @@ const TransactionExecutor = require("./transactionExecutor");
 const transactionFactory = require("./transactionFactory");
 const exchangeFactory = require("./exchangeFactory");
 const logger = require("../utils/logger");
+const Constants = require("../constants/Constants");
 
 class TransactionScheduler {
   constructor(transactions) {
@@ -35,8 +36,7 @@ class TransactionScheduler {
     if (!exchangeFactory[transaction.exchange]) {
       logger.error({
         exchange: transaction.exchange,
-        message:
-          "No configuration defined for this exchange in config.json. Exiting."
+        message: Constants.NO_CFG_FOR_EXCHANGE
       });
       process.exit();
     }

@@ -1,7 +1,6 @@
 const exchangeFactory = require("./exchangeFactory");
-const logger = require("../utils/logger");
 const notificationMediator = require("./notificationMediator");
-const Channels = require("../enums/Channels");
+const Constants = require("../constants/Constants");
 
 class TransactionExecutor {
   static doExecuteTransactions(transactions) {
@@ -11,7 +10,7 @@ class TransactionExecutor {
   }
 
   static doExecuteTransaction(transaction) {
-    notificationMediator.publish(Channels.BUYMARKET, transaction);
+    notificationMediator.publish(Constants.BUY_MARKET, transaction);
     exchangeFactory[transaction.exchange][transaction.action](transaction);
   }
 }

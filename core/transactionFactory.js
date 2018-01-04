@@ -2,6 +2,7 @@ const fs = require("fs");
 const Transaction = require("./transaction");
 const logger = require("../utils/logger");
 const transactionConfigFile = "./transactions.json";
+const Constants = require("../constants/Constants");
 
 const TransactionFactory = function() {
   this.transactions = [];
@@ -11,7 +12,7 @@ const TransactionFactory = function() {
 
 TransactionFactory.prototype.reloadTransactions = function() {
   if (!fs.existsSync(transactionConfigFile)) {
-    logger.error("Transaction configuration file not found. Exiting");
+    logger.error(Constants.TRANS_CFG_NOT_FOUND);
     process.exit();
   }
 
@@ -20,7 +21,7 @@ TransactionFactory.prototype.reloadTransactions = function() {
 };
 
 TransactionFactory.prototype.readTransactionsJSON = () => {
-  const rawData = fs.readFileSync("./transactions.json");
+  const rawData = fs.readFileSync(transactionConfigFile);
   const parsedJSON = JSON.parse(rawData);
 
   if (
@@ -28,7 +29,7 @@ TransactionFactory.prototype.readTransactionsJSON = () => {
     !parsedJSON.transactions ||
     parsedJSON.transactions.length == 0
   ) {
-    logger.error("No transactions defined in transactions.json. Exiting.");
+    logger.error(Constants.NO_TRANS_DEFINED);
     process.exit();
   }
 
