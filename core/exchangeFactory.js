@@ -11,7 +11,7 @@ const ExchangeFactory = function() {
   //Check if the config file exists
   if (!fs.existsSync(exchangeConfigFile)) {
     logger.error(Constants.EXCHANGE_CFG_NOT_FOUND);
-    process.exit();
+    process.exit(1);
   }
 
   // Get list of exchanges from the exchanges directory

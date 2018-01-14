@@ -6,6 +6,15 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "bitcoin",
+    "ethereum",
+    "cryptocurrency",
+    "trading",
+    "dollar",
+    "cost",
+    "averaging"
+  ],
   "author": "Vytenis Sabelka",
   "license": "ISC",
   "dependencies": {

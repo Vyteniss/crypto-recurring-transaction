@@ -10,5 +10,6 @@ module.exports = Object.freeze({
   NO_CFG_FOR_EXCHANGE:
     "No config defined for this exchange in config.json. Exiting.",
   NEXT_INV: "Transaction executed. Next invocation for this transaction is: ",
-  TRANS_SCHEDULED: "Transaction scheduled. It will run at: "
+  TRANS_SCHEDULED: "Transaction scheduled. It will run at: ",
+  CALCULATED_AMOUNT: "Calculated amount to Buy: "
 });

@@ -1,6 +1,7 @@
 const fs = require("fs");
 const Bitstamp = require("bitstamp");
 const logger = require("../utils/logger");
+const CalcUtils = require("../utils/calc");
 
 class BitstampExchange {
   constructor() {
@@ -23,12 +24,27 @@ class BitstampExchange {
     };
   }
 
-  buyMarket(transaction) {
-    this.bitstampClient.buyMarket(
-      transaction.currencyPair,
-      transaction.amount,
-      logger.info
-    );
+  buyMarket(currencyPair, amount) {
+    this.bitstampClient.buyMarket(currencyPair, amount, (err, resp) => {
+      logger.info({
+        error: err,
+        resp: resp
+      });
+    });
+  }
+
+  buyMarketWithAmountToSpend(currencyPair, amountToSpend) {
+    this.bitstampClient.ticker(currencyPair, (err, ticker) => {
+      if (err) {
+        logger.error(err);
+      } else {
+        const amountToBuy = CalcUtils.CalcAmountToBuy(
+          amountToSpend,
+          ticker.last
+        );
+        this.buyMarket(currencyPair, amountToBuy);
+      }
+    });
   }
 }
 

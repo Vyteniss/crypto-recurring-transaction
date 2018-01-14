@@ -37,7 +37,7 @@ class TransactionScheduler {
         exchange: transaction.exchange,
         message: Constants.NO_CFG_FOR_EXCHANGE
       });
-      process.exit();
+      process.exit(1);
     }
 
     const job = schedule.scheduleJob(transaction.recurrence, () => {

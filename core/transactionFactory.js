@@ -13,7 +13,7 @@ const TransactionFactory = function() {
 TransactionFactory.prototype.reloadTransactions = function() {
   if (!fs.existsSync(transactionConfigFile)) {
     logger.error(Constants.TRANS_CFG_NOT_FOUND);
-    process.exit();
+    process.exit(1);
   }
 
   const rawData = this.readTransactionsJSON();
@@ -30,7 +30,7 @@ TransactionFactory.prototype.readTransactionsJSON = () => {
     parsedJSON.transactions.length == 0
   ) {
     logger.error(Constants.NO_TRANS_DEFINED);
-    process.exit();
+    process.exit(1);
   }
 
   return parsedJSON;

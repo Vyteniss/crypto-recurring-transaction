@@ -11,7 +11,11 @@ class TransactionExecutor {
 
   static doExecuteTransaction(transaction) {
     notificationMediator.publish(Constants.BUY_MARKET, transaction);
-    exchangeFactory[transaction.exchange][transaction.action](transaction);
+
+    exchangeFactory[transaction.exchange][transaction.action](
+      transaction.currencyPair,
+      transaction.amount
+    );
   }
 }
 
